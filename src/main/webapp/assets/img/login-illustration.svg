@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 720" role="img" aria-label="Ilustración académica">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#063f39"/><stop offset="1" stop-color="#0c8f6a"/></linearGradient>
+    <linearGradient id="skin" x1="0" x2="1"><stop stop-color="#d7fff3"/><stop offset="1" stop-color="#88e4ce"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="20" flood-opacity=".18"/></filter>
+  </defs>
+  <rect width="760" height="720" rx="42" fill="url(#bg)"/>
+  <circle cx="600" cy="124" r="110" fill="#b8f8e7" opacity=".12"/>
+  <circle cx="90" cy="560" r="145" fill="#001f29" opacity=".25"/>
+  <path d="M136 718c52-180 110-293 174-338 87-61 189-36 220 68 18 61-2 149-60 270z" fill="#062c3b"/>
+  <path d="M309 91c148 6 282 132 281 282-1 91-54 153-115 183-55 27-119 18-159-28-51-59-44-150-47-226-3-70-23-135 40-211z" fill="url(#skin)" filter="url(#shadow)"/>
+  <path d="M318 98c-64 66-58 144-32 207 25 61 14 121-11 172-25-58-62-139-58-219 3-73 31-133 101-160z" fill="#083f49"/>
+  <path d="M463 236c32 13 60 48 69 85-38-4-73-37-89-70z" fill="#0b6f63" opacity=".75"/>
+  <path d="M496 320c21-9 54-7 78 5-26 29-62 37-91 26z" fill="#075b54"/>
+  <circle cx="461" cy="235" r="9" fill="#092d3d"/>
+  <path d="M443 404c29 31 70 28 98 5" fill="none" stroke="#0a524c" stroke-width="11" stroke-linecap="round"/>
+  <g transform="translate(102 386)">
+    <path d="M58 218c-9-73 2-139 35-198" fill="none" stroke="#87e6bf" stroke-width="9"/>
+    <path d="M93 77C45 78 18 53 7 19c48-3 78 22 86 58zM76 133c-45-2-71-24-83-55 44-4 71 18 83 55zM76 176c33-24 65-23 92-5-30 30-64 32-92 5z" fill="#7be1b2"/>
+  </g>
+  <g transform="translate(500 447)">
+    <path d="M62 214C48 132 53 68 80 5" fill="none" stroke="#b6f4dc" stroke-width="8"/>
+    <path d="M76 55C36 50 12 29 2 1c39-4 64 17 74 54zM65 111c38-23 71-19 95 2-34 27-67 26-95-2zM60 164c-41-4-65-25-73-55 42-2 67 21 73 55z" fill="#b6f4dc"/>
+  </g>
+  <g transform="translate(312 463)">
+    <rect x="0" y="0" width="194" height="146" rx="22" fill="#fff" opacity=".96" filter="url(#shadow)"/>
+    <rect x="24" y="25" width="146" height="14" rx="7" fill="#d5eee8"/>
+    <rect x="24" y="57" width="95" height="12" rx="6" fill="#c5e4dc"/>
+    <rect x="24" y="92" width="45" height="32" rx="10" fill="#13ad7b"/>
+    <rect x="80" y="92" width="90" height="32" rx="10" fill="#e5f6f1"/>
+  </g>
+</svg>

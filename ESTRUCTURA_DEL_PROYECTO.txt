@@ -1,0 +1,38 @@
+EduAsistenciaJSP/
+├── pom.xml
+├── README_INICIO.txt
+├── dist/
+│   └── EduAsistenciaJSP.war
+└── src/
+    └── main/
+        ├── java/
+        │   └── com/eduasistencia/
+        │       ├── model/
+        │       │   ├── Student.java
+        │       │   ├── Attendance.java
+        │       │   ├── Schedule.java
+        │       │   └── TeacherRecord.java
+        │       ├── repository/
+        │       │   └── AppRepository.java
+        │       └── util/
+        │           └── WebUtil.java
+        └── webapp/
+            ├── META-INF/context.xml
+            ├── WEB-INF/web.xml
+            ├── assets/
+            │   ├── css/styles.css
+            │   ├── js/app.js
+            │   ├── js/camera.js
+            │   ├── img/login-illustration.svg
+            │   └── qr/
+            ├── index.jsp
+            ├── login.jsp
+            ├── dashboard.jsp
+            ├── asistencia.jsp
+            ├── alumnos.jsp
+            ├── horarios.jsp
+            ├── alumno.jsp
+            ├── registro.jsp
+            ├── descargar-horario.jsp
+            ├── descargar-asistencia.jsp
+            └── logout.jsp

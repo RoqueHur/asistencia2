@@ -1,0 +1,7 @@
+com\eduasistencia\repository\AppRepository$DataState.class
+com\eduasistencia\model\TeacherRecord.class
+com\eduasistencia\model\Schedule.class
+com\eduasistencia\model\Attendance.class
+com\eduasistencia\util\WebUtil.class
+com\eduasistencia\repository\AppRepository.class
+com\eduasistencia\model\Student.class
