@@ -1,0 +1,31 @@
+UNIDADES Y REGULAR FUNCIONALES
+==============================
+
+Se habilitaron los botones:
+- UNIDAD 1
+- UNIDAD 2
+- UNIDAD 3
+- UNIDAD 4
+- REGULAR
+
+FUNCIONAMIENTO
+--------------
+1. Al seleccionar una unidad, la pestaña queda resaltada.
+2. El curso, la fecha y la unidad seleccionada se conservan al cambiar de pestaña.
+3. Las asistencias se guardan por alumno, curso, fecha y periodo académico.
+4. Un mismo alumno puede tener registros diferentes en UNIDAD 1, UNIDAD 2, UNIDAD 3, UNIDAD 4 y REGULAR para la misma fecha y curso.
+5. La cámara QR recibe el periodo seleccionado y registra la asistencia en esa unidad.
+6. El historial, el portal del alumno y el CSV muestran el periodo académico de cada registro.
+7. Los registros antiguos se conservan y se asignan automáticamente a UNIDAD 4 para mantener compatibilidad.
+
+ARCHIVOS PRINCIPALES MODIFICADOS
+--------------------------------
+- src/main/java/com/eduasistencia/model/Attendance.java
+- src/main/java/com/eduasistencia/repository/AppRepository.java
+- src/main/java/com/eduasistencia/util/WebUtil.java
+- src/main/webapp/lista-asistencia.jsp
+- src/main/webapp/asistencia.jsp
+- src/main/webapp/dashboard.jsp
+- src/main/webapp/alumno.jsp
+- src/main/webapp/descargar-asistencia.jsp
+- src/main/webapp/assets/css/styles.css

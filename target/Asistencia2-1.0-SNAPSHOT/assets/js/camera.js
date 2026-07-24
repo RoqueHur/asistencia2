@@ -6,6 +6,7 @@
   const status = document.getElementById('camera-status');
   const message = document.getElementById('scan-message');
   const scanCode = document.getElementById('scan-code');
+  const scanCourse = document.getElementById('scan-course');
   const scanForm = document.getElementById('scan-form');
   if (!video || !startButton) return;
 
@@ -13,6 +14,8 @@
   let scanning = false;
   let detector = null;
   let submitted = false;
+
+  const selectedCourse = () => scanCourse?.value?.trim() || 'el curso seleccionado';
 
   async function startCamera() {
     if (!navigator.mediaDevices?.getUserMedia) {
@@ -29,13 +32,18 @@
       await video.play();
       placeholder.style.display = 'none';
       status.textContent = 'Cámara encendida';
-      message.textContent = 'Buscando un código QR…';
+      message.textContent = `Buscando un código QR para ${selectedCourse()}…`;
       startButton.textContent = 'Apagar cámara';
       scanning = true;
+      submitted = false;
 
       if ('BarcodeDetector' in window) {
-        try { detector = new BarcodeDetector({ formats: ['qr_code'] }); scanLoop(); }
-        catch (_) { message.textContent = 'La cámara está activa. Usa registro manual si no detecta QR.'; }
+        try {
+          detector = new BarcodeDetector({ formats: ['qr_code'] });
+          scanLoop();
+        } catch (_) {
+          message.textContent = 'La cámara está activa. Usa registro manual si no detecta QR.';
+        }
       } else {
         message.textContent = 'Tu navegador no incluye lector QR. La cámara funciona; usa registro manual.';
       }
@@ -45,14 +53,14 @@
     }
   }
 
-  function stopCamera() {
+  function stopCamera(preserveMessage = false) {
     scanning = false;
     stream?.getTracks().forEach(track => track.stop());
     stream = null;
     video.srcObject = null;
     placeholder.style.display = '';
     status.textContent = 'Cámara apagada';
-    message.textContent = 'Esperando lectura QR…';
+    if (!preserveMessage) message.textContent = `Esperando lectura QR para ${selectedCourse()}…`;
     startButton.textContent = 'Encender cámara';
   }
 
@@ -65,9 +73,9 @@
         if (value) {
           submitted = true;
           status.textContent = 'Código detectado';
-          message.textContent = `Registrando ${value}…`;
+          message.textContent = `Registrando ${value} en ${selectedCourse()}…`;
           scanCode.value = value;
-          stopCamera();
+          stopCamera(true);
           scanForm.submit();
           return;
         }
@@ -78,5 +86,5 @@
 
   startButton.addEventListener('click', () => stream ? stopCamera() : startCamera());
   toggleButton?.addEventListener('click', () => stream ? stopCamera() : startCamera());
-  window.addEventListener('beforeunload', stopCamera);
+  window.addEventListener('beforeunload', () => stopCamera(true));
 })();

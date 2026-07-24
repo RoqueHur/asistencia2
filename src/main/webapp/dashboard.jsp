@@ -63,12 +63,14 @@
                     <div class="panel-head"><div><h2>Asistencia reciente</h2><p>Últimos registros almacenados.</p></div><a href="asistencia.jsp">Ver todos</a></div>
                     <div class="table-wrap">
                         <table>
-                            <thead><tr><th>Alumno</th><th>Fecha</th><th>Hora</th><th>Estado</th></tr></thead>
+                            <thead><tr><th>Alumno</th><th>Curso</th><th>Periodo</th><th>Fecha</th><th>Hora</th><th>Estado</th></tr></thead>
                             <tbody>
-                            <% if (records.isEmpty()) { %><tr><td colspan="4" class="empty">Todavía no hay registros.</td></tr><% } %>
+                            <% if (records.isEmpty()) { %><tr><td colspan="6" class="empty">Todavía no hay registros.</td></tr><% } %>
                             <% for (int i = 0; i < Math.min(6, records.size()); i++) { Attendance a = records.get(i); Student s = repo.findStudentByCode(a.getStudentCode()); %>
                             <tr>
                                 <td><strong><%= WebUtil.h(s == null ? a.getStudentCode() : s.getFullName()) %></strong><small class="table-sub"><%= WebUtil.h(a.getStudentCode()) %></small></td>
+                                <td><span class="course-table-chip"><%= WebUtil.h(a.getCourse()) %></span></td>
+                                <td><span class="period-table-chip"><%= WebUtil.h(WebUtil.periodLabel(a.getPeriod())) %></span></td>
                                 <td><%= a.getDate().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) %></td>
                                 <td><%= a.getTime().format(DateTimeFormatter.ofPattern("HH:mm")) %></td>
                                 <td><span class="badge <%= a.getStatus().toLowerCase() %>"><%= a.getStatus() %></span></td>

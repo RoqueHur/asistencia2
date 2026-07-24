@@ -1,0 +1,629 @@
+/*
+ * Diseño específico para Cámara QR y Lista de asistencia.
+ * Se carga después de styles.css para corregir distribución, espaciado
+ * y presentación de los controles sin alterar el resto del sistema.
+ */
+
+:root {
+  --attendance-green: #0f9669;
+  --attendance-green-dark: #087852;
+  --attendance-green-light: #e8f8f1;
+  --attendance-blue: #3c78f2;
+  --attendance-red: #e34c58;
+  --attendance-ink: #13203a;
+  --attendance-muted: #6f7d96;
+  --attendance-line: #dfe5ee;
+  --attendance-surface: #ffffff;
+  --attendance-bg: #f4f7fb;
+  --attendance-shadow: 0 12px 34px rgba(28, 45, 78, .08);
+}
+
+/* Evita que los elementos nuevos aparezcan sin diseño cuando el navegador
+   conserva una versión anterior del CSS principal. */
+.attendance-page .content,
+.camera-page .content {
+  width: 100%;
+  max-width: 1440px;
+  padding: 28px 30px 42px;
+}
+
+.attendance-page .page-heading,
+.camera-page .page-heading {
+  margin-bottom: 22px;
+}
+
+.attendance-page .page-heading h1,
+.camera-page .page-heading h1 {
+  margin: 8px 0 6px;
+  color: var(--attendance-ink);
+  font-size: clamp(25px, 2.3vw, 34px);
+  line-height: 1.15;
+}
+
+.attendance-page .page-heading p,
+.camera-page .page-heading p {
+  color: var(--attendance-muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.attendance-page .heading-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* =========================
+   LISTA DE ASISTENCIA
+   ========================= */
+.attendance-page .attendance-overview-card {
+  display: block !important;
+  width: 100%;
+  padding: 16px !important;
+  margin: 0 0 16px !important;
+  overflow: hidden;
+  color: #fff;
+  background: linear-gradient(118deg, #087b55 0%, #0e9567 55%, #25ad7e 100%) !important;
+  border: 0 !important;
+  border-radius: 18px !important;
+  box-shadow: 0 15px 34px rgba(10, 120, 82, .22) !important;
+}
+
+.attendance-page .attendance-summary-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1.25fr .82fr 1.45fr !important;
+  width: 100%;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: 14px;
+  background: rgba(255,255,255,.055);
+}
+
+.attendance-page .attendance-summary-item {
+  min-width: 0;
+  min-height: 96px;
+  padding: 15px 16px !important;
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  border-right: 1px solid rgba(255,255,255,.14);
+}
+
+.attendance-page .attendance-summary-item:last-child {
+  border-right: 0;
+}
+
+.attendance-page .attendance-summary-icon {
+  flex: 0 0 42px;
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 13px;
+  color: #fff;
+  background: rgba(255,255,255,.14);
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.attendance-page .attendance-summary-item > div {
+  min-width: 0;
+  width: 100%;
+  display: grid;
+  gap: 5px;
+}
+
+.attendance-page .attendance-summary-item small {
+  color: rgba(255,255,255,.76) !important;
+  font-size: 10px !important;
+  font-weight: 800;
+  letter-spacing: .045em;
+  text-transform: uppercase;
+}
+
+.attendance-page .attendance-summary-item strong {
+  overflow: hidden;
+  color: #fff !important;
+  font-size: 17px !important;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.attendance-page .attendance-course-item {
+  cursor: default;
+}
+
+.attendance-page .attendance-course-item select {
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  padding: 9px 38px 9px 12px;
+  color: var(--attendance-ink);
+  background: #fff;
+  border: 0;
+  border-radius: 10px;
+  outline: none;
+  box-shadow: 0 4px 14px rgba(0,0,0,.08);
+}
+
+.attendance-page .attendance-course-item select:focus {
+  box-shadow: 0 0 0 4px rgba(255,255,255,.24);
+}
+
+.attendance-page .attendance-overview-actions {
+  display: flex !important;
+  align-items: end;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 14px;
+}
+
+.attendance-page .attendance-date-control {
+  min-width: 205px;
+  display: grid;
+  gap: 5px;
+}
+
+.attendance-page .attendance-date-control span {
+  color: rgba(255,255,255,.8) !important;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.attendance-page .attendance-date-control input {
+  width: 100%;
+  min-height: 43px;
+  padding: 9px 12px;
+  color: var(--attendance-ink);
+  background: #fff;
+  border: 0;
+  border-radius: 11px;
+  outline: none;
+}
+
+.attendance-page .attendance-overview-actions .btn {
+  min-height: 43px;
+  padding-inline: 18px;
+  white-space: nowrap;
+}
+
+.attendance-page .btn-light-action {
+  color: var(--attendance-green-dark) !important;
+  background: #fff !important;
+  border: 1px solid rgba(255,255,255,.45) !important;
+}
+
+.attendance-page .btn-light-action:hover {
+  background: #effaf5 !important;
+}
+
+.attendance-page .btn-light-danger {
+  color: #c93e4a !important;
+  background: #fff !important;
+  border: 1px solid rgba(255,255,255,.45) !important;
+}
+
+.attendance-page .btn-light-danger:hover {
+  background: #fff1f3 !important;
+}
+
+.attendance-page .attendance-tabs {
+  display: flex !important;
+  align-items: center;
+  gap: 8px !important;
+  width: 100%;
+  margin: 0 0 16px !important;
+  padding: 7px !important;
+  overflow-x: auto;
+  background: #fff !important;
+  border: 1px solid var(--attendance-line) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 5px 18px rgba(28,45,78,.035);
+  scrollbar-width: thin;
+}
+
+.attendance-page .attendance-tabs a {
+  flex: 1 0 110px;
+  min-width: 110px !important;
+  padding: 10px 16px !important;
+  color: #65728b !important;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 10px !important;
+  text-align: center;
+  font-size: 11px !important;
+  font-weight: 900 !important;
+  letter-spacing: .02em;
+  white-space: nowrap;
+  transition: .18s ease;
+}
+
+.attendance-page .attendance-tabs a:hover {
+  color: var(--attendance-blue) !important;
+  background: #edf3ff !important;
+  transform: translateY(-1px);
+}
+
+.attendance-page .attendance-tabs a.active {
+  color: #fff !important;
+  background: linear-gradient(135deg, #3b76ed, #4d87fb) !important;
+  border-color: #3b76ed;
+  box-shadow: 0 8px 19px rgba(60,120,242,.24) !important;
+}
+
+.attendance-page .attendance-list-panel {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--attendance-line);
+  border-radius: 17px;
+  box-shadow: var(--attendance-shadow);
+}
+
+.attendance-page .course-context-row {
+  padding: 15px 20px 0 !important;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.attendance-page .course-context-row > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 12px !important;
+  color: var(--attendance-green-dark) !important;
+  background: var(--attendance-green-light) !important;
+  border-radius: 10px;
+  font-size: 12px;
+}
+
+.attendance-page .course-context-row .period-context-chip {
+  color: #285a92 !important;
+  background: #edf4ff !important;
+}
+
+.attendance-page .attendance-list-panel .panel-head {
+  min-height: 86px;
+  padding: 18px 20px !important;
+  margin-top: 4px;
+}
+
+.attendance-page .attendance-list-panel .search-input {
+  width: min(280px, 100%);
+  max-width: 280px;
+}
+
+.attendance-page .attendance-table th {
+  padding: 14px 16px;
+  background: #f9fbfd;
+}
+
+.attendance-page .attendance-table td {
+  padding: 15px 16px;
+}
+
+.attendance-page .attendance-table tbody tr:hover {
+  background: #f8fcfa;
+}
+
+.attendance-page .attendance-form-footer {
+  background: #fbfcfe;
+}
+
+/* =========================
+   CÁMARA QR
+   ========================= */
+.camera-page .course-session-card {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) auto !important;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 16px 18px !important;
+  margin: 0 0 10px !important;
+  color: var(--attendance-ink) !important;
+  background: #fff !important;
+  border: 1px solid var(--attendance-line) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 8px 26px rgba(28,45,78,.05) !important;
+}
+
+.camera-page .course-session-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  color: var(--attendance-green-dark) !important;
+  background: var(--attendance-green-light) !important;
+  border-radius: 14px;
+  font-size: 17px;
+  font-weight: 900;
+}
+
+.camera-page .course-session-copy {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.camera-page .course-session-copy small {
+  color: var(--attendance-muted) !important;
+  font-size: 12px !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+
+.camera-page .course-session-copy strong {
+  color: var(--attendance-ink) !important;
+  font-size: 18px !important;
+}
+
+.camera-page .course-session-copy span {
+  overflow: hidden;
+  color: #526079 !important;
+  font-size: 12px !important;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.camera-page .course-session-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 11px;
+  color: var(--attendance-green-dark);
+  background: var(--attendance-green-light);
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.camera-page .course-control-bar {
+  display: flex !important;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 10px !important;
+  width: 100%;
+  padding: 12px 14px !important;
+  margin: 0 0 18px !important;
+  background: #fff !important;
+  border: 1px solid var(--attendance-line) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 7px 22px rgba(28,45,78,.04);
+}
+
+.camera-page .course-control-select {
+  min-width: 280px;
+  flex: 1 1 370px;
+  display: grid;
+  gap: 6px;
+}
+
+.camera-page .course-control-select > span {
+  color: #43516a;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.camera-page .course-control-select select {
+  width: 100%;
+  min-width: 0;
+  min-height: 43px;
+  padding: 10px 13px;
+  color: var(--attendance-ink);
+  background: #fff;
+  border: 1px solid var(--attendance-line);
+  border-radius: 11px;
+  outline: none;
+}
+
+.camera-page .course-control-select select:focus {
+  border-color: var(--attendance-green);
+  box-shadow: 0 0 0 4px rgba(15,150,105,.1);
+}
+
+.camera-page .course-control-bar .btn {
+  flex: 0 0 auto;
+  min-height: 43px;
+  padding-inline: 17px;
+  white-space: nowrap;
+}
+
+.camera-page .btn-course-add {
+  color: var(--attendance-green-dark) !important;
+  background: #fff !important;
+  border: 1px solid #b7dfcf !important;
+}
+
+.camera-page .btn-course-remove {
+  color: #cb3f4d !important;
+  background: #fff !important;
+  border: 1px solid #ffc5cb !important;
+}
+
+.camera-page .scanner-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) 320px !important;
+  align-items: start;
+  gap: 18px !important;
+  overflow: visible !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.camera-page .scanner-panel,
+.camera-page .instruction-panel {
+  min-width: 0;
+  border: 1px solid var(--attendance-line) !important;
+  border-radius: 17px !important;
+  box-shadow: var(--attendance-shadow) !important;
+}
+
+.camera-page .scanner-panel {
+  padding: 18px !important;
+  background: #f1f4fb !important;
+}
+
+.camera-page .instruction-panel {
+  padding: 22px !important;
+  background: #fff !important;
+  border-left: 1px solid var(--attendance-line) !important;
+}
+
+.camera-page .camera-frame {
+  width: min(650px, 100%) !important;
+  margin: 8px auto 15px;
+  border-radius: 17px;
+}
+
+.camera-page .current-marking-card {
+  width: min(650px, 100%) !important;
+  margin-top: 15px;
+  background: #f7fffb;
+}
+
+.camera-page .recent-scans {
+  width: min(760px, 100%) !important;
+}
+
+.camera-page .instruction-panel h3 {
+  font-size: 18px;
+}
+
+.camera-page .teacher-check {
+  margin-top: 22px;
+  background: #f7fbf9;
+}
+
+.camera-page .stats-grid.compact {
+  margin-top: 20px;
+}
+
+/* Los modales de agregar/quitar cursos siempre quedan sobre la página. */
+.attendance-page .modal,
+.camera-page .modal {
+  z-index: 1000;
+}
+
+.attendance-page .modal-card-small,
+.camera-page .modal-card-small {
+  width: min(500px, 100%);
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 1180px) {
+  .attendance-page .attendance-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+  .attendance-page .attendance-summary-item:nth-child(2) {
+    border-right: 0;
+  }
+  .attendance-page .attendance-summary-item:nth-child(-n+2) {
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  .camera-page .scanner-layout {
+    grid-template-columns: minmax(0, 1fr) 290px !important;
+  }
+}
+
+@media (max-width: 1020px) {
+  .camera-page .scanner-layout {
+    grid-template-columns: 1fr !important;
+  }
+  .camera-page .course-session-card {
+    grid-template-columns: auto minmax(0, 1fr) !important;
+  }
+  .camera-page .course-session-badge {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 820px) {
+  .attendance-page .content,
+  .camera-page .content {
+    padding: 22px 18px 36px;
+  }
+  .attendance-page .page-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .attendance-page .heading-actions {
+    width: 100%;
+    justify-content: stretch;
+  }
+  .attendance-page .heading-actions .btn {
+    flex: 1 1 180px;
+  }
+  .attendance-page .attendance-overview-actions {
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 720px) {
+  .attendance-page .attendance-summary-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .attendance-page .attendance-summary-item,
+  .attendance-page .attendance-summary-item:nth-child(2) {
+    border-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,.14);
+  }
+  .attendance-page .attendance-summary-item:last-child {
+    border-bottom: 0;
+  }
+  .attendance-page .attendance-overview-actions {
+    flex-direction: column;
+  }
+  .attendance-page .attendance-date-control,
+  .attendance-page .attendance-overview-actions .btn {
+    width: 100%;
+  }
+  .attendance-page .attendance-list-panel .panel-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .attendance-page .attendance-list-panel .search-input {
+    width: 100%;
+    max-width: none;
+  }
+  .camera-page .course-control-bar {
+    align-items: stretch;
+  }
+  .camera-page .course-control-select {
+    min-width: 100%;
+    flex-basis: 100%;
+  }
+  .camera-page .course-control-bar .btn {
+    flex: 1 1 145px;
+  }
+}
+
+@media (max-width: 520px) {
+  .camera-page .course-session-card {
+    grid-template-columns: 1fr !important;
+  }
+  .camera-page .course-session-badge {
+    grid-column: auto;
+    justify-self: start;
+  }
+  .camera-page .course-session-copy span {
+    white-space: normal;
+  }
+  .attendance-page .attendance-tabs a {
+    flex-basis: 100px;
+    min-width: 100px !important;
+  }
+}

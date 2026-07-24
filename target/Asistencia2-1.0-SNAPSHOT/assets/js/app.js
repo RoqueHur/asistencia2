@@ -45,16 +45,18 @@
 
 (() => {
   const clock = document.getElementById('live-clock');
+  const scannerClock = document.getElementById('scanner-live-clock');
   const pad = value => String(value).padStart(2, '0');
   const currentTime = () => {
     const now = new Date();
     return `${pad(now.getHours())}:${pad(now.getMinutes())}`;
   };
 
-  if (clock) {
+  if (clock || scannerClock) {
     const refreshClock = () => {
       const now = new Date();
-      clock.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      if (clock) clock.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
+      if (scannerClock) scannerClock.textContent = `${pad(now.getHours())}:${pad(now.getMinutes())}:${pad(now.getSeconds())}`;
     };
     refreshClock();
     window.setInterval(refreshClock, 1000);

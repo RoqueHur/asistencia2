@@ -1,0 +1,27 @@
+MEJORAS REALIZADAS EN CÁMARA QR
+===============================
+
+1. Selección de curso antes de tomar asistencia.
+2. Cada marcación guarda: alumno, curso, fecha, hora y estado.
+3. El mismo alumno puede ser registrado en diferentes cursos el mismo día.
+4. Debajo de la cámara se muestra claramente el curso que se está marcando.
+5. Debajo de la cámara aparece la lista de los últimos alumnos registrados en la clase.
+6. La asistencia docente muestra su última ENTRADA o SALIDA, la hora y el curso.
+7. Se incluye un historial corto de las últimas marcaciones del profesor.
+8. El registro manual también guarda el curso seleccionado.
+9. La lista diaria permite cambiar fecha y curso.
+10. El dashboard, portal del alumno y CSV ahora muestran el curso de cada asistencia.
+
+ARCHIVOS PRINCIPALES MODIFICADOS
+-------------------------------
+- src/main/webapp/asistencia.jsp
+- src/main/webapp/lista-asistencia.jsp
+- src/main/webapp/dashboard.jsp
+- src/main/webapp/alumno.jsp
+- src/main/webapp/descargar-asistencia.jsp
+- src/main/webapp/assets/css/styles.css
+- src/main/webapp/assets/js/camera.js
+- src/main/webapp/assets/js/app.js
+- src/main/java/com/eduasistencia/model/Attendance.java
+- src/main/java/com/eduasistencia/model/TeacherRecord.java
+- src/main/java/com/eduasistencia/repository/AppRepository.java
